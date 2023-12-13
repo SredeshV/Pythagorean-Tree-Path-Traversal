@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Traversal Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        p {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pythagorean Tree Path Traversal</h1>
+    </header>
+
+    <section>
+        <p>Enter the path to be traversed in the tree:</p>
+        <input type="text" id="inputPath" placeholder="Enter path (L, M, R)">
+        <button onclick="findPath()">Find Path</button>
+        <p id="result"></p>
+        <h3>Sample tree propagation depiction</h3>
+        <img src="Tree.png" alt="tree" width="300" height="300">
+        <p>To learn more about Pythagorean Tree, refer this video:<a href="https://youtu.be/94mV7Fmbx88?feature=shared" target="_blank">Pythagorean Tree</a></p>
+    </section>
+
+    <script>
+        function goL(x, y) {
+            const a = 3n * x - y;
+            const b = 4n * x - y;
+            return [a, b];
+        }
+
+        function goM(x, y) {
+            const a = x + y;
+            const b = 2n * x + y;
+            return [a, b];
+        }
+
+        function goR(x, y) {
+            const a = 2n * y - x;
+            const b = 3n * y - 2n * x;
+            return [a, b];
+        }
+
+        function findPath() {
+            const inputPath = document.getElementById('inputPath').value;
+            let p = 3n, q = 4n;
+
+            for (let i = 0; i < inputPath.length; i++) {
+                if (inputPath[i] === 'L') {
+                    [p, q] = goL(p, q);
+                } else if (inputPath[i] === 'M') {
+                    [p, q] = goM(p, q);
+                } else if (inputPath[i] === 'R') {
+                    [p, q] = goR(p, q);
+                }
+            }
+
+            const a = (q - p) * p;
+            const b = (p - q / 2n) * q;
+            const c = (q - p) * q + p * p - q * q / 2n;
+
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `The Pythagorean triplet obtained after traversal is: ${a.toLocaleString()}-${b.toLocaleString()}-${c.toLocaleString()}`;
+        }
+    </script>
+
+</body>
+</html>
