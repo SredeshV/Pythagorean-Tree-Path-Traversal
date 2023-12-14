@@ -20,12 +20,12 @@
         }
 
         section {
-            max-width: 800px;
-            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            margin: 20px;
         }
 
         button {
@@ -41,6 +41,22 @@
         p {
             margin: 20px 0;
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -55,8 +71,8 @@
         <button onclick="findPath()">Find Path</button>
         <p id="result"></p>
         <h3>Sample tree propagation depiction</h3>
-        <img src="Tree.png" alt="tree" width="300" height="300">
-        <p>To learn more about Pythagorean Tree, refer this video:<a href="https://youtu.be/94mV7Fmbx88?feature=shared" target="_blank">Pythagorean Tree</a></p>
+        <img src="Tree.png" alt="tree">
+        <p>To learn more about Pythagorean Tree, refer to this video: <a href="https://youtu.be/94mV7Fmbx88?feature=shared" target="_blank">Pythagorean Tree</a></p>
     </section>
 
     <script>
